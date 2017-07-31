@@ -1,2 +1,2 @@
 # Android
-These are my attemps to develop an Android application.
+Personal attempts to develop an Android applications.
