@@ -1,2 +1,0 @@
-Educación
-Voluntariado
