@@ -1,5 +1,5 @@
 # Android
 
 List of projects in each branch:
-  - town-game: Tutorial de android
-  - directorio - Aplicación de directorio
+  - town-game: Tutorial.
+  - directorio: Aplicación de directorio para revista.
