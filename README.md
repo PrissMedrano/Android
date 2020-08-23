@@ -1,6 +1,5 @@
 # Android
-Personal attempts to develop an Android applications.
 
-There is a branch for each project:
-  - Tow-Game
-  - Directorio - Aplicación de directorio
+List of projects in each branch:
+  - town-game: Tutorial de android
+  - directorio - Aplicación de directorio
