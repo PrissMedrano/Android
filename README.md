@@ -1,2 +1,5 @@
 # Android
-Personal attempts to develop an Android applications.
+
+List of projects in each branch:
+  - town-game: Tutorial.
+  - directorio: Aplicación de directorio para revista.
