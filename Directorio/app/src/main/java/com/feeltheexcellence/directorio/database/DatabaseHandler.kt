@@ -112,10 +112,12 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME,null
         val dbFile = context.getDatabasePath(DB_NAME)
         try {
             val checkDB = context.openOrCreateDatabase(DB_NAME, Context.MODE_PRIVATE,null)
-            val version = checkDB.version
-            checkDB?.close()
-            if (!dbFile.exists() || version < DB_VERSION) {
+            if (!dbFile.exists() || checkDB.version < DB_VERSION){
+                checkDB.version = DB_VERSION
+                checkDB?.close()
                 copyDatabase(dbFile)
+            } else{
+                checkDB?.close()
             }
         } catch (e: IOException) {
             throw RuntimeException("Error creating source database", e)
