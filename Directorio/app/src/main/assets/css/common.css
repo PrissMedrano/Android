@@ -1,0 +1,18 @@
+.background-gradient {
+  background: -webkit-gradient(linear, left top, right top, from(#1ca5db), to(#373e84)) fixed;
+}
+
+.bottom-navbar {
+  background: -webkit-gradient(linear, left top, right top, from(#2abde9), to(#6b4197)) fixed;
+}
+
+.bottom-navbar a {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+}
+
+.form-control::placeholder {
+  color: white;
+  opacity:0.6
+}

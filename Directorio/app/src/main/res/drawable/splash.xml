@@ -6,6 +6,6 @@
         android:layout_height="match_parent">
         <bitmap
             android:gravity="clip_horizontal"
-            android:src="@drawable/logo" />
+            android:src="@drawable/splash_image" />
     </item>
 </layer-list>
