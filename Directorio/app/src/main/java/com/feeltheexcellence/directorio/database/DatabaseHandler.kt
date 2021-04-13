@@ -55,7 +55,10 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME,null
         listado = "<div class=\"list-group\" id=\"list\">\n"
         if (cursor?.moveToFirst()!!) {
             do {
-                listado += "<a href=\"open://elemento/" + TABLA_SUPPLIERS + "/" + cursor.getInt(0) + "\" class=\"list-group-item list-group-item-action bg-transparent text-white\">" + cursor.getString(1) + "</a>\n"
+                listado += "<a href=\"open://elemento/" + TABLA_SUPPLIERS + "/" + cursor.getInt(0) + "\" class=\"list-group-item list-group-item-action bg-transparent text-white\">" +
+                        "<span class=\"fas fa-briefcase-medical\"></span> " +
+                        cursor.getString(1) +
+                        "</a>\n"
             } while (cursor.moveToNext())
         }
         listado += "</div>"
