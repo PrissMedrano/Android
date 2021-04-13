@@ -7,21 +7,20 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-              integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
-              crossorigin="anonymous">
+                href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+                integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+                crossorigin="anonymous">
 
         <!-- Fontawesome CSS -->
         <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
-              integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
-              crossorigin="anonymous"/>
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+                integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
+                crossorigin="anonymous"/>
 
         <link rel="stylesheet" href="css/common.css"/>
 
-        <title>Feel the Excellence - Heatlh</title>
+        <title>Feel the Excellence</title>
     </head>
-
     <body class="background-gradient">
         <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -32,23 +31,24 @@
                 crossorigin="anonymous"></script>
 
         <div class="container-fluid">
-            <div class="row" style="background-color:#9eb1cf">
+            <div class="row pt-4 pb-4">
                 <div class="col-xl-12 text-center">
-                    <img src="imgs/Suppliers.png" class="img-fluid" alt="Responsive image">
+                    <img class="rounded-lg" src="imgs/logo.png">
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-12">
-                    <!-- Search form -->
-                    <div class="input-group mb-3 mt-2">
-                        <div class="input-group-prepend bg-transparent">
-                            <span class="input-group-text" id="icon"><i class="fas fa-search" aria-hidden="true"></i></span>
-                        </div>
-                        <input id="searchInput" type="text" class="form-control bg-transparent text-white"
-                               placeholder="Buscar por nombre o especialidad..." aria-label="Search"
-                               aria-describedby="icon">
+                    <div class="jumbotron" style="background-color:#9eb1cf !important;">
+                        <a class="btn btn-normal btn-lg text-center w-100" href="open://submenu/suppliers_customers.html" role="button">
+                            <img src="imgs/Suppliers.png" class="img-fluid" alt="Responsive image">
+                        </a>
                     </div>
-                    <LISTA_ELEMENTOS/>
+
+                    <div class="jumbotron" style="background-color:#9eb1cf !important;">
+                        <a class="btn btn-normal btn-lg text-center w-100" href="open://submenu/suppliers_industry.html" role="button">
+                            <img src="imgs/Suppliers.png" class="img-fluid" alt="Responsive image">
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -62,16 +62,4 @@
             </div>
         </div>
     </body>
-    <script>
-        $(document).ready(function(){
-          $("#searchInput").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#list a").css("display", function() {
-              console.log(this.innerText);
-              return this.innerText.toLowerCase().indexOf(value) > -1 ? "":"none"
-            });
-          });
-        });
-
-    </script>
 </html>

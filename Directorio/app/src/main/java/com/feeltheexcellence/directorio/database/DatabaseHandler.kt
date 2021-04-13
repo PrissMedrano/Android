@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.lang.Exception
 
 class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME,null, DB_VERSION) {
     val HEALTH = "html/menu/health.html"
@@ -32,6 +33,37 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME,null
         println("onUpgrade")
     }
 
+    fun getConfigValue(nombre: String): String {
+        val db = openDatabase()
+        val sql = "SELECT valor FROM Configuracion WHERE nombre = '" + nombre + "'";
+        var cursor: Cursor? = null
+        var valor = ""
+
+        try {
+            cursor = db.rawQuery(sql, null)
+            if (cursor?.moveToFirst()!!) {
+                valor = cursor.getString(0)
+            }
+        }
+        catch (e: Exception){
+            println("ERROR SQL")
+        }
+        finally {
+            return valor
+        }
+    }
+
+    fun setConfigValue(nombre: String, valor: String) {
+        val db = openDatabase()
+        val sql = "UPDATE Configuration SET valor = '" + valor + "' WHERE nombre = '" + nombre + "'";
+        try {
+            db.execSQL(sql)
+        }
+        catch (e: Exception){
+            print("Error SQL")
+        }
+    }
+
     fun getListado(tipo: String): String {
         val db = openDatabase()
         var sql = ""
@@ -45,8 +77,10 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME,null
 
         }
         else if(tipo.equals(SUPPLIERS)){
-            sql = "SELECT id, empresa from MedicalSuppliers ORDER BY empresa asc"
+
         }
+
+        sql = "SELECT id, empresa from MedicalSuppliers ORDER BY empresa asc"
         try{
             cursor = db.rawQuery(sql, null)
         }catch (e: SQLiteException) {

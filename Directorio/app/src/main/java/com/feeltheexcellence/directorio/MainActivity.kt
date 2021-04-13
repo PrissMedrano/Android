@@ -2,6 +2,7 @@ package com.feeltheexcellence.directorio
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.provider.Settings
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     val URL_HEALTH = "html/menu/health.html"
     val URL_FOOD_BED = "html/menu/food-bed.html"
-    val URL_SUPPLIERS = "html/submenu/suppliers.html"
+    val URL_SUPPLIERS = "html/menu/suppliers.html"
     val HOME = "file:///android_asset/index.html"
     val MIME = "text/html"
     val ENCONDING = "utf-8"
@@ -35,9 +36,13 @@ class MainActivity : AppCompatActivity() {
         val databaseHandler: DatabaseHandler = DatabaseHandler(this)
         val indexWebView: WebView = findViewById(R.id.indexWebView)
         indexWebView.settings.javaScriptEnabled = true;
-        indexWebView.loadUrl("file:///android_asset/index.html")
-        val context = this;
 
+        if(databaseHandler.getConfigValue("ShowLogin") == "true"){
+            //databaseHandler.setConfigValue("ShowLogin", "false")
+            indexWebView.loadUrl("file:///android_asset/html/account/login.html")
+        }else{
+            indexWebView.loadUrl("file:///android_asset/index.html")
+        }
         indexWebView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
                 var result = false
