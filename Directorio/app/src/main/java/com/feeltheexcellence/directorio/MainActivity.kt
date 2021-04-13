@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         indexWebView.settings.javaScriptEnabled = true;
 
         if(databaseHandler.getConfigValue("ShowLogin") == "true"){
-            //databaseHandler.setConfigValue("ShowLogin", "false")
+            databaseHandler.setConfigValue("ShowLogin", "false")
             indexWebView.loadUrl("file:///android_asset/html/account/login.html")
         }else{
             indexWebView.loadUrl("file:///android_asset/index.html")

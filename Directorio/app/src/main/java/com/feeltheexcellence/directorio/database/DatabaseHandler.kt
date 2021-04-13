@@ -55,7 +55,7 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME,null
 
     fun setConfigValue(nombre: String, valor: String) {
         val db = openDatabase()
-        val sql = "UPDATE Configuration SET valor = '" + valor + "' WHERE nombre = '" + nombre + "'";
+        val sql = "UPDATE Configuracion SET valor = '" + valor + "' WHERE nombre = '" + nombre + "'";
         try {
             db.execSQL(sql)
         }
@@ -150,7 +150,6 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME,null
         try {
             val checkDB = context.openOrCreateDatabase(DB_NAME, Context.MODE_PRIVATE,null)
             if (!dbFile.exists() || checkDB.version < DB_VERSION){
-                checkDB.version = DB_VERSION
                 checkDB?.close()
                 copyDatabase(dbFile)
             } else{
@@ -159,7 +158,11 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DB_NAME,null
         } catch (e: IOException) {
             throw RuntimeException("Error creating source database", e)
         }
-        return SQLiteDatabase.openDatabase(dbFile.path, null, SQLiteDatabase.OPEN_READWRITE)
+        var db = SQLiteDatabase.openDatabase(dbFile.path, null, SQLiteDatabase.OPEN_READWRITE)
+        if(db.version < DB_VERSION){
+            db.version = DB_VERSION
+        }
+        return db
     }
 
     @SuppressLint("WrongConstant")
